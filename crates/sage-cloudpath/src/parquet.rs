@@ -64,6 +64,7 @@ pub fn build_schema() -> Result<Type, parquet::errors::ParquetError> {
             required float spectrum_q;
             required float peptide_q;
             required float protein_q;
+            required float collision_energy;
             optional group reporter_ion_intensity (LIST) {
                 repeated group list {
                     optional float element;
@@ -216,6 +217,7 @@ pub fn serialize_features(
         write_col!(spectrum_q, FloatType);
         write_col!(peptide_q, FloatType);
         write_col!(protein_q, FloatType);
+        write_col!(collision_energy, FloatType);
 
         if let Some(col) = rg.next_column()? {
             if reporter_ions.is_empty() {

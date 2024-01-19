@@ -87,6 +87,7 @@ impl Runner {
         record.push_field(ryu::Buffer::new().format(feature.peptide_q).as_bytes());
         record.push_field(ryu::Buffer::new().format(feature.protein_q).as_bytes());
         record.push_field(ryu::Buffer::new().format(feature.ms2_intensity).as_bytes());
+        record.push_field(ryu::Buffer::new().format(feature.collision_energy).as_bytes());
         record
     }
 
@@ -187,6 +188,7 @@ impl Runner {
             "peptide_q",
             "protein_q",
             "ms2_intensity",
+            "collision_energy"
         ];
 
         let headers = csv::ByteRecord::from(csv_headers);

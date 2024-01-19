@@ -55,6 +55,7 @@ const ION_INJECTION_TIME: &[u8] = b"MS:1000927";
 const SELECTED_ION_MZ: &[u8] = b"MS:1000744";
 const SELECTED_ION_INT: &[u8] = b"MS:1000042";
 const SELECTED_ION_CHARGE: &[u8] = b"MS:1000041";
+const COLLISION_ENERGY: &[u8] = b"MS:1000045";
 
 const ISO_WINDOW_LOWER: &[u8] = b"MS:1000828";
 const ISO_WINDOW_UPPER: &[u8] = b"MS:1000829";
@@ -221,6 +222,9 @@ impl MzMLReader {
                         match accession.as_ref() {
                             ISO_WINDOW_LOWER => iso_window_lo = Some(extract_value!(ev)),
                             ISO_WINDOW_UPPER => iso_window_hi = Some(extract_value!(ev)),
+                            COLLISION_ENERGY => {
+                                precursor.collision_energy = Some(extract_value!(ev));
+                            }
                             _ => {}
                         }
                     }

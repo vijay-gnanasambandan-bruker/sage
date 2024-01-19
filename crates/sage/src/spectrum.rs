@@ -52,6 +52,7 @@ pub struct Precursor {
     // pub scan: Option<usize>,
     pub spectrum_ref: Option<String>,
     pub isolation_window: Option<Tolerance>,
+    pub collision_energy: Option<f32>
 }
 
 #[derive(Clone, Default, Debug)]
